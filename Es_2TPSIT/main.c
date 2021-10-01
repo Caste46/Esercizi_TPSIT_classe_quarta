@@ -1,63 +1,91 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 20
-#define DIM 5
+#define MAX_CHAR  20
+#define N_STUD  2
 
 /*
-Definire una struttura per memorizzare  i dati degli studenti
-di una classe e dei voti nelle varie materie: Italiano, Matematica e Informatica.
-Si scriva una funzione in c, che a partire da un vettore di studenti fornito come argomento,
-determini la disciplina con la media più alta.
+Definire una struttura per memorizzare i dati degli
+studenti di una classe e dei voti nelle varie discipline:
+Italiano, Matematica e Informatica.
+Si scriva una funzione in C che, a partire da un vettore di studenti fornito come argomento,
+determini la disciplina che ha la media più alta.
 */
 
 typedef struct{
-    char nome[MAX];
-    char cognome[MAX];
-    float ita;
-    float mate;
-    float info;
-}voti;
-
-float media(voti studente[]){
-    int k;
-    float medIta, medMate, medInfo;
-    float somIta = 0;
-    float somMate = 0;
-    float somInfo = 0;
-
-    for(k = 0; k < DIM; k++){
-        somIta = somIta + studente[k].ita;
-        somMate = somMate + studente[k].mate;
-        somInfo = somInfo + studente[k].info;
-    }
-}
+    int matricola;
+    char nome[MAX_CHAR];
+    char cognome[MAX_CHAR];
+    float italiano;
+    float matematica;
+    float informatica;
+}Studente;
 
 int main()
 {
-    voti studente[DIM];
-    int k, i;
-    float med;
+    Studente classe[N_STUD];
+    int k;
 
-    for(k=0; k<DIM; k++){
-       printf("inserisci il nome: ");
-       scanf("%s", &studente[k].nome);
-       printf("inserisci il cognome: ");
-       scanf("%s", &studente[k].cognome);
-
-
-        printf("inserisci un voto di italiano: ");
-        scanf("%d", &studente[k].ita);
-        printf("inserisci un voto di matematica: ");
-        scanf("%d", &studente[k].mate);
-        printf("inserisci un voto di informatica: ");
-        scanf("%d", &studente[k].info);
-
-    med = media(studente);
-
+    for(k = 0; k < N_STUD; k++){
+        printf("Inserisci i dati dello studente [%d]", k+1);
+        printf("\nNome: ");
+        //gets(classe[k].nome);
+        scanf("%s", classe[k].nome);
+        fflush(stdin);
+        printf("\nCognome: ");
+        //gets(classe[k].cognome);
+        scanf("%s", classe[k].nome);
+        fflush(stdin);
+        printf("\nMatricola: ");
+        scanf("%d", &classe[k].matricola);
+        fflush(stdin);
+        printf("\nVoto Italiano: ");
+        scanf("%f", &classe[k].italiano);
+        fflush(stdin);
+        printf("\nVoto Matematica: ");
+        scanf("%f", &classe[k].matematica);
+        fflush(stdin);
+        printf("\nVoto Informatica: ");
+        scanf("%f", &classe[k].informatica);
+        fflush(stdin);
+        printf("\n");
     }
-    for(k=0; k<DIM; k++){
-        //printf("nome: %s, cognome: %s, media maggiore: %d \n", classe[k].nome, classe[k].cognome, classe[k].matricola);
+    printf("\n\nDati acquisiti.\n\n");
+
+    float mediaIta;
+    float mediaMate;
+    float mediaInfo;
+    float somma = 0;
+
+    for(k = 0; k < N_STUD; k++){
+        somma = somma + classe[k].italiano;
+    }
+    mediaIta = somma / N_STUD;
+    somma = 0;
+
+    for(k = 0; k < N_STUD; k++){
+        somma = somma + classe[k].matematica;
+    }
+    mediaMate = somma / N_STUD;
+    somma = 0;
+
+    for(k = 0; k < N_STUD; k++){
+        somma = somma + classe[k].informatica;
+    }
+    mediaInfo = somma / N_STUD;
+
+    if(mediaIta > mediaMate && mediaIta > mediaInfo){
+        printf("Italiano e' la disciplina con la media piu' alta \n");
     }
 
+    if(mediaMate > mediaIta && mediaMate > mediaInfo){
+        printf("Matematica e' la disciplina con la media piu' alta \n");
+    }
+
+    if(mediaInfo > mediaMate && mediaInfo > mediaIta){
+        printf("Informatica e' la disciplina con la media piu' alta \n");
+    }
+
+    printf("\n");
+    system("PAUSE");
     return 0;
 }
