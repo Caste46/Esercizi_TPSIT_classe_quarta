@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1608129749 source:c:\users\caste\desktop\informatica\if_cicli\es_1funzionic_disegnarexasterischinvolte\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../utility.h"
+
+1605525635 c:\users\caste\desktop\informatica\if_cicli\utility.h
+	<time.h>
+	<windows.h>
+	<wincon.h>
+	<stdio.h>
+	<conio.h>
+
