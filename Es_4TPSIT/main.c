@@ -2,14 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 #define DIM 30
+#define MAX 50
 
 
 typedef struct {
-    char numero[DIM];
-    char titoloFilm[DIM];
-    char genere[DIM];
-    char annoUscita[DIM];
-    char dispo[DIM];
+    char numero[MAX];
+    char titoloFilm[MAX];
+    char genere[MAX];
+    char annoUscita[MAX];
+    char dispo[MAX];
 } Cinema;
 
 void caricaVettore(Cinema v[], int n, char nomeFilm[]) {
@@ -59,7 +60,7 @@ int main() {
 
     Cinema film[DIM];
 
-    caricaVettore(film, DIM, "film.csv");
+    caricaVettore(film, DIM, "film.txt");
 
     stampaVettore(film, DIM);
     return 0;
