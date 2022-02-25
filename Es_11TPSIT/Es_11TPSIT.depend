@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1636718657 source:c:\users\caste\desktop\tpsit\laboratorio\es_11tpsit\main.c
+	<stdio.h>
+	<stdlib.h>
+
